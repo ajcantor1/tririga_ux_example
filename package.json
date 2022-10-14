@@ -1,0 +1,50 @@
+{
+  "name": "my-first-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@carbon/icons-react": "^11.7.0",
+    "@carbon/styles": "^1.9.0",
+    "@tririga/cra-template": "1.0.1",
+    "@tririga/tri-deploy": "^1.2.3",
+    "@tririga/tririga-react-components": "^1.2.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "5.0.1",
+    "rsuite": "^5.16.6",
+    "sass": "^1.54.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "env-cmd -x -f ./.env.development.local tri-deploy -t \\$REACT_APP_TRIRIGA_URL -u \\$TRIRIGA_USER -p \\$TRIRIGA_PASSWORD -c -m 3",
+    "build:deploy": "npm run build && npm run deploy",
+    "lint": "./node_modules/.bin/eslint src",
+    "lint-fix": "./node_modules/.bin/eslint --fix src --ext .js",
+    "pretty-quick": "pretty-quick"
+  },
+  "eslintConfig": {},
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "homepage": ".",
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pretty-quick && npm run lint",
+      "pre-push": "npm run lint"
+    }
+  }
+}
